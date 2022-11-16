@@ -37,6 +37,13 @@
             $query = "DELETE FROM aktivnosti WHERE id = $this->id";
             return $conn->query($query);
         }
+
+        public function izmeni(mysqli $conn){
+            $query = "UPDATE aktivnosti SET Opis ='$this->Opis', katID ='$this->katID' 
+            WHERE id='$this->id'";
+           
+            return $conn->query($query);
+        }
     }
 
 ?>

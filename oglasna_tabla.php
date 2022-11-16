@@ -4,12 +4,13 @@ require "model/aktivnosti.php";
 
 session_start();
 
+if(!isset($_SESSION['id'])){
+    header('Location:index.php');
+    exit();
+}
+
 $data = Aktivnosti::prikazi($conn);
 
-if (isset($_SESSION['login'])) {
-	
-	$ime = $_SESSION['username'];
-	$sifra = $_SESSION['password'];
 
 
 ?>
@@ -98,8 +99,5 @@ if (isset($_SESSION['login'])) {
 
 <?php
 
-} else {
-	header("location:index.php");
-}
 
 ?>

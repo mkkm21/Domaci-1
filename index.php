@@ -23,7 +23,7 @@
                             <input type="password" name="password" id="password" class="form-control">
                         </div>
                         <div class="form-grop mt-4 text-white">
-                          <input type="submit" name="submit" style="color: white;" class="btn btn-info btn-md" value="Potvrdi">
+                          <input type="submit" name="submit" style="color: black;" class="btn btn-info btn-md" value="Potvrdi">
                         </div>
                     </form>
                 </div>

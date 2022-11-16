@@ -1,3 +1,27 @@
+<?php
+require "dbBroker.php";
+require "model/korisnik.php";
+
+session_start();
+
+if(isset($_POST['username']) && isset($_POST['password'])){
+
+    $ime = $_POST['username'];
+    $sifra = $_POST['password'];
+
+    $user = new Korisnik(null, $ime, $sifra);
+    $response = Korisnik::logInUser($user, $conn);
+
+    if($response->num_rows==1){
+
+        $_SESSION['katID'] = $response->fetch_array()['id'];
+        header('Location: oglasna_tabla.php');
+        exit();
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

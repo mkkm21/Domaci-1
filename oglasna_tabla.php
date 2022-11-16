@@ -1,3 +1,18 @@
+<?php
+require "dbBroker.php";
+require "model/aktivnosti.php";
+
+session_start();
+
+if (isset($_SESSION['login'])) {
+	
+	$ime = $_SESSION['username'];
+	$prezime = $_SESSION['password'];
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,3 +68,11 @@
     
 </body>
 </html>
+
+<?php
+
+} else {
+	header("location:login.php");
+}
+
+?>

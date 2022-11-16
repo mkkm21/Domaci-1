@@ -14,8 +14,8 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
     if($response->num_rows==1){
 
-        $_SESSION['katID'] = $response->fetch_array()['id'];
-        header('Location: oglasna_tabla.php');
+        $_SESSION['id'] = $response->fetch_assoc()['id'];
+        header('Location:oglasna_tabla.php');
         exit();
     }
 }

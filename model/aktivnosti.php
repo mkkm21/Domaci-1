@@ -32,6 +32,11 @@
             }
             return $myArray;
         }
+
+        public function obrisi(mysqli $conn){
+            $query = "DELETE FROM aktivnosti WHERE id = $this->id";
+            return $conn->query($query);
+        }
     }
 
 ?>

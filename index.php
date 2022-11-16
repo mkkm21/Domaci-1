@@ -14,7 +14,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
     if($response->num_rows==1){
 
-        $_SESSION['id'] = $response->fetch_assoc()['id'];
+        $_SESSION['id'] = $response->fetch_array()['id'];
         header('Location:oglasna_tabla.php');
         exit();
     }
@@ -35,7 +35,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 </head>
 <body>
     <div id = "login">
-        <h1>Prijava</h1>
+        <h1 class="text-center text-black pt-5 mt-5">Prijava</h1>
         <div class = "container"> 
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">

@@ -41,7 +41,7 @@ if (isset($_SESSION['login'])) {
                    
                     <div class="break"></div>
                     <div style="flex:1"><input type="submit" class="btn btn-primary mb-4" style="margin-left:3rem" value="Potvrdi"></div>
-                    <div style="flex:1"><input type="reset" class="btn btn-primary mb-4" style="margin-left:3rem" value="Poništi"></div>
+                    <div style="flex:1"><input type="reset" class="btn btn-primary mb-4" style="margin-left:3rem" value="Poništi" onclick="ponisti();"></div>
                 </div>
             </form>
         </div>
@@ -51,26 +51,48 @@ if (isset($_SESSION['login'])) {
         <div id="task-container">
             <div class="taks-wrapper p-3 flex-wrapper">
                 <div style="flex:2">
-                    <button class="btn btn-primary">Dodaj novu aktivnost</button>
+                    <button class="btn btn-primary" onclick="prikazi();">Dodaj novu aktivnost</button>
                 </div>
                 <div style="flex:1">
                     <form action="">
                         <label style="margin-right:10px" for="pretraga">Pretraži</label>
-                        <input id="pretraga"  class="ml-1" name="pretraga" type="text">
+                        <input id="pretraga" oninput="pretrazi();" class="ml-1" name="pretraga" type="text">
                     </form>
                 </div>
             </div>
             <div class="task-wrapper flex-wrapper border-top text-center" style="font-weight: bold;">
                 
                 <div style="flex:2; padding-left:10px; padding-right:10px;">Opis</div>
-                
+                <div onclick="sortirajPoKategoriji();" style="flex:1; cursor: pointer;">SORT</div>
                 <div style="flex:1; cursor: pointer;">Kategorija</div>
                 <div style="flex:1">Izmeni</div>
             </div>
-            
+            <div id="data">
+                <?php
+                    foreach(array_reverse($data) as $row):
+                ?>
+                <div class="task-wrapper flex-wrapper align-items-center">
+                    <div id="opis" class="opis" style="flex:2; padding-left:10px; padding-right:10px;"><?php echo $row['opis'] ?></div>
+                    <div class="text-center" style="flex:1"><?php echo $row['katID'] ?></div>
+                    <div class="text-center" style="flex:1">
+                        <div>
+                            <button class="btn btn-primary" 
+                            onclick="uredi(<?php echo $row['id'] ?>, '<?php echo $row['opis'] ?>');">Uredi</button>
+                            <div class="break"></div>
+                            <button class="btn btn-danger" onclick="obrisi(<?php echo $row['id'] ?>);">Obriši</button>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                    endforeach;
+                ?>
+            </div>
         </div>
     </div>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 </html>
 

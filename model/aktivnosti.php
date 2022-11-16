@@ -2,24 +2,24 @@
 
     class Aktivnosti{
         public $id;
-        public $Opis;
+        public $opis;
         public $katID;
 
-        public function __construct($id = null, $Opis = null, $katID = null)
+        public function __construct($id = null, $opis = null, $katID = null)
         {
             $this->id = $id;
-            $this->Opis = $Opis;
+            $this->opis = $opis;
             $this->katID = $katID;
         }
 
         public static function dodaj_aktivnost(Aktivnosti $aktivnosti, mysqli $conn)
         {
-            $query = "INSERT INTO aktivnosti(Opis, katID) VALUES('$aktivnosti->Opis', '$aktivnosti->katID')";
+            $query = "INSERT INTO aktivnosti(opis, katID) VALUES('$aktivnosti->opis', '$aktivnosti->katID')";
             return $conn->query($query);
         }
         
         public static function prikazi(mysqli $conn){
-            $query = "SELECT A.id, A.Opis, K.katID FROM aktivnosti A 
+            $query = "SELECT A.id, A.opis, K.katID FROM aktivnosti A 
             INNER JOIN kategorije K on A.katID=K.katID";
     
             $myArray = array();
@@ -39,7 +39,7 @@
         }
 
         public function izmeni(mysqli $conn){
-            $query = "UPDATE aktivnosti SET Opis ='$this->Opis', katID ='$this->katID' 
+            $query = "UPDATE aktivnosti SET opis ='$this->opis', katID ='$this->katID' 
             WHERE id='$this->id'";
            
             return $conn->query($query);

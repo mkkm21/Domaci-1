@@ -40,7 +40,7 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                         </div>
                         <div style="flex:1">
                             <label for="opis">Opis:</label>
-                            <textarea id="form-opis" class="form-control" name="opis" rows="4" cols="50"></textarea>
+                            <textarea id="form-opis" class="form-control" name="opis" rows="3" cols="30"></textarea>
                         </div>
                     </div>
                     <div class="break"></div>
@@ -53,22 +53,12 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
     <div class="container">
         <h2 class="text-center text-white mt-5">Oglasna tabla</h2>
         <div id="task-container">
-            <div class="taks-wrapper p-3 flex-wrapper">
-                <div style="flex:2">
-                    <button class="btn btn-primary" onclick="prikazi();">Dodaj novu aktivnost</button>
-                </div>
-                <div style="flex:1">
-                    <form action="">
-                        <label style="margin-right:10px" for="pretraga">Pretraži</label>
-                        <input id="pretraga" oninput="pretrazi();" class="ml-1" name="pretraga" type="text">
-                    </form>
-                </div>
-            </div>
+            
             <div class="task-wrapper flex-wrapper border-top text-center" style="font-weight: bold;">
                 <div style="flex:1">Naslov</div>
                 <div style="flex:2; padding-left:10px; padding-right:10px;">Opis</div>
-                <div onclick="sortirajPoKorisniku();" style="flex:1; cursor: pointer;">SORT</div>
-                <div style="flex:1; cursor: pointer;">Kategorija</div>
+                <div onclick="sortirajPoKorisniku();" style="flex:1; cursor: pointer;">🧾️</div>
+                <div style="flex:1; cursor: pointer;">Autor</div>
                 <div style="flex:1">Izmeni</div>
             </div>
             <div id="data">
@@ -91,6 +81,17 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                 <?php
                     endforeach;
                 ?>
+            </div>
+            <div class="taks-wrapper p-3 flex-wrapper">
+                <div style="flex:2">
+                    <button class="btn btn-primary" onclick="prikazi();">Dodaj novu aktivnost</button>
+                </div>
+                <div style="flex:1">
+                    <form action="">
+                        <label style="margin-right:10px" for="pretraga">Pretraži</label>
+                        <input id="pretraga" oninput="pretrazi();" class="ml-1" name="pretraga" type="text">
+                    </form>
+                </div>
             </div>
         </div>
     </div>

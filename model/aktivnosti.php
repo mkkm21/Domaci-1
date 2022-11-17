@@ -2,25 +2,27 @@
 
     class Aktivnosti{
         public $id;
+        public $naslov;
         public $opis;
-        public $katID;
+        public $user_id;
 
-        public function __construct($id = null, $opis = null, $katID = null)
+        public function __construct($id = null, $naslov = null, $opis = null, $user_id = null)
         {
             $this->id = $id;
+            $this->naslov = $naslov;
             $this->opis = $opis;
-            $this->katID = $katID;
+            $this->user_id = $user_id;
         }
 
         public static function dodaj_aktivnost(Aktivnosti $aktivnosti, mysqli $conn)
         {
-            $query = "INSERT INTO aktivnosti(opis, katID) VALUES('$aktivnosti->opis', '$aktivnosti->katID')";
+            $query = "INSERT INTO aktivnosti(naslov, opis, user_id) VALUES('$aktivnosti->naslov', '$aktivnosti->opis', '$aktivnosti->user_id')";
             return $conn->query($query);
         }
         
-        public static function prikazi(mysqli $conn){
-            $query = "SELECT A.id, A.opis, K.katID FROM aktivnosti A 
-            INNER JOIN kategorije K on A.katID=K.katID";
+        public static function prikazi_aktivnosti(mysqli $conn){
+            $query = "SELECT A.id, A.naslov, A.opis, K.username FROM aktivnosti A 
+            INNER JOIN korisnik K on A.user_id=K.id";
     
             $myArray = array();
             $result = $conn->query($query);
@@ -33,13 +35,13 @@
             return $myArray;
         }
 
-        public function obrisi(mysqli $conn){
+        public function obrisi_aktivnost(mysqli $conn){
             $query = "DELETE FROM aktivnosti WHERE id = $this->id";
             return $conn->query($query);
         }
 
-        public function izmeni(mysqli $conn){
-            $query = "UPDATE aktivnosti SET opis ='$this->opis', katID ='$this->katID' 
+        public function izmeni_aktivnost(mysqli $conn){
+            $query = "UPDATE aktivnosti SET naslov ='$this->naslov', opis ='$this->opis', user_id ='$this->user_id' 
             WHERE id='$this->id'";
            
             return $conn->query($query);

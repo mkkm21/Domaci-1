@@ -4,12 +4,12 @@ require "model/aktivnosti.php";
 
 session_start();
 
-if(!isset($_SESSION['id'])){
-    header('Location:index.php');
-    exit();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    die();
 }
 
-$data = Aktivnosti::prikazi($conn);
+$data = Aktivnosti::prikazi_aktivnosti($conn);
 
 
 
@@ -32,14 +32,17 @@ $data = Aktivnosti::prikazi($conn);
         <div id="form-prikaz" class="container form pt-0" >
             <form id="form" action="">
                 <div class="flex-wrapper">
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>">
                         <input name = "id" id="form-id" type="hidden">
-                        
+                        <div style="flex:1">
+                            <label for="naslov">Naslov:</label>
+                            <input id="form-naslov" class="form-control" name="naslov" type="text">
+                        </div>
                         <div style="flex:1">
                             <label for="opis">Opis:</label>
                             <textarea id="form-opis" class="form-control" name="opis" rows="4" cols="50"></textarea>
                         </div>
                     </div>
-                   
                     <div class="break"></div>
                     <div style="flex:1"><input type="submit" class="btn btn-primary mb-4" style="margin-left:3rem" value="Potvrdi"></div>
                     <div style="flex:1"><input type="reset" class="btn btn-primary mb-4" style="margin-left:3rem" value="Poništi" onclick="ponisti();"></div>
@@ -62,9 +65,9 @@ $data = Aktivnosti::prikazi($conn);
                 </div>
             </div>
             <div class="task-wrapper flex-wrapper border-top text-center" style="font-weight: bold;">
-                
+                <div style="flex:1">Naslov</div>
                 <div style="flex:2; padding-left:10px; padding-right:10px;">Opis</div>
-                <div onclick="sortirajPoKategoriji();" style="flex:1; cursor: pointer;">SORT</div>
+                <div onclick="sortirajPoKorisniku();" style="flex:1; cursor: pointer;">SORT</div>
                 <div style="flex:1; cursor: pointer;">Kategorija</div>
                 <div style="flex:1">Izmeni</div>
             </div>
@@ -73,12 +76,13 @@ $data = Aktivnosti::prikazi($conn);
                     foreach(array_reverse($data) as $row):
                 ?>
                 <div class="task-wrapper flex-wrapper align-items-center">
+                    <div id="naslov" class="text-center" style="flex:1; font-weight:bolder; color:royalblue"><?php echo $row['naslov'] ?></div>
                     <div id="opis" class="opis" style="flex:2; padding-left:10px; padding-right:10px;"><?php echo $row['opis'] ?></div>
-                    <div class="text-center" style="flex:1"><?php echo $row['katID'] ?></div>
+                    <div class="text-center" style="flex:1"><?php echo $row['username'] ?></div>
                     <div class="text-center" style="flex:1">
                         <div>
                             <button class="btn btn-primary" 
-                            onclick="uredi(<?php echo $row['id'] ?>, '<?php echo $row['opis'] ?>');">Uredi</button>
+                            onclick="uredi(<?php echo $row['id'] ?>, '<?php echo $row['naslov'] ?>', '<?php echo $row['opis'] ?>');">Izmeni</button>
                             <div class="break"></div>
                             <button class="btn btn-danger" onclick="obrisi(<?php echo $row['id'] ?>);">Obriši</button>
                         </div>

@@ -4,7 +4,7 @@ require "../model/aktivnosti.php";
 
 if(isset($_POST['id'])){
     $aktivnosti = new Aktivnosti($_POST['id']);
-    $status = $aktivnosti->obrisi($conn);
+    $status = $aktivnosti->obrisi_aktivnost($conn);
 
     if($status){
         echo "Uspešno";

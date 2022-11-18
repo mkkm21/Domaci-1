@@ -43,11 +43,11 @@ if(isset($_POST['username']) && isset($_POST['password'])){
                     <form id="login-form" action="" method="post">
                         <div class="form-group">
                             <label for="username" >Korisničko ime:</label><br>
-                            <input type="text" name="username" id="username" class="form-control">
+                            <input type="text" name="username" id="username" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="password" >Šifra:</label><br>
-                            <input type="password" name="password" id="password" class="form-control">
+                            <input type="password" name="password" id="password" class="form-control" required>
                         </div>
                         <div class="form-grop mt-4 text-white">
                           <input type="submit" name="submit" style="color: black;" class="btn btn-info btn-md" value="Potvrdi">

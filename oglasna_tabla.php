@@ -44,8 +44,8 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                         </div>
                     </div>
                     <div class="break"></div>
-                    <div style="flex:1"><input type="submit" class="btn btn-primary mb-4" style="margin-left:3rem" value="Potvrdi"></div>
-                    <div style="flex:1"><input type="reset" class="btn btn-primary mb-4" style="margin-left:3rem" value="Poništi" onclick="ponisti();"></div>
+                    <div style="flex:1"><input type="submit" class="btn btn-info mb-4" style="margin-left:3rem" value="Potvrdi"></div>
+                    <div style="flex:1"><input type="reset"  class="btn btn-info mb-4" style="margin-left:3rem" value="Poništi" onclick="ponisti();"></div>
                 </div>
             </form>
         </div>
@@ -59,7 +59,7 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                 <div style="flex:2; padding-left:10px; padding-right:10px;">Opis</div>
                 <div onclick="sortirajPoKorisniku();" style="flex:1; cursor: pointer;">🧾️</div>
                 <div style="flex:1; cursor: pointer;">Autor</div>
-                <div style="flex:1">Izmeni</div>
+                <div style="flex:1"></div>
             </div>
             <div id="data">
                 <?php
@@ -71,10 +71,10 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                     <div class="text-center" style="flex:1"><?php echo $row['username'] ?></div>
                     <div class="text-center" style="flex:1">
                         <div>
-                            <button class="btn btn-primary" 
+                            <button class="btn btn-secondary" 
                             onclick="uredi(<?php echo $row['id'] ?>, '<?php echo $row['naslov'] ?>', '<?php echo $row['opis'] ?>');">Izmeni</button>
                             <div class="break"></div>
-                            <button class="btn btn-danger" onclick="obrisi(<?php echo $row['id'] ?>);">Obriši</button>
+                            <button class="btn btn-warning" onclick="obrisi(<?php echo $row['id'] ?>);">Obriši</button>
                         </div>
                     </div>
                 </div>
@@ -84,14 +84,14 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
             </div>
             <div class="taks-wrapper p-3 flex-wrapper">
                 <div style="flex:2">
-                    <button class="btn btn-primary" onclick="prikazi();">Dodaj novu aktivnost</button>
                 </div>
                 <div style="flex:1">
                     <form action="">
-                        <label style="margin-right:10px" for="pretraga">Pretraži</label>
+                        <label style="margin-right:10px" for="pretraga">Pretraži po naslovu</label>
                         <input id="pretraga" oninput="pretrazi();" class="ml-1" name="pretraga" type="text">
                     </form>
-                </div>
+                    <button class="btn btn-primary" onclick="prikazi();">Dodaj novu aktivnost</button>
+                    <button class="btn btn-danger" onclick="window.location.href='logout.php'">Odjavi se</button>
             </div>
         </div>
     </div>

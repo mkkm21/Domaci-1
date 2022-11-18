@@ -57,7 +57,6 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
             <div class="task-wrapper flex-wrapper border-top text-center" style="font-weight: bold;">
                 <div style="flex:1">Naslov</div>
                 <div style="flex:2; padding-left:10px; padding-right:10px;">Opis</div>
-                <div onclick="sortirajPoKorisniku();" style="flex:1; cursor: pointer;">🧾️</div>
                 <div style="flex:1; cursor: pointer;" text-center>Autor</div>
                 <div style="flex:1"></div>
             </div>

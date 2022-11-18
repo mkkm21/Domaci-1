@@ -28,7 +28,9 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
     <title>Oglasna tabla</title>
 </head>
 <body>
+
 <div id="form-bg" class="form-bg ">
+
         <div id="form-prikaz" class="container form pt-0" >
             <form id="form" action="">
                 <div class="flex-wrapper">
@@ -36,36 +38,36 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                         <input name = "id" id="form-id" type="hidden">
                         <div style="flex:1">
                             <label for="naslov">Naslov:</label>
-                            <input id="form-naslov" class="form-control" name="naslov" type="text">
-                        </div>
-                        <div style="flex:1">
+                            <input id="form-naslov" class="form-control" name="naslov" type="text" required>
                             <label for="opis">Opis:</label>
-                            <textarea id="form-opis" class="form-control" name="opis" rows="3" cols="30"></textarea>
+                            <textarea id="form-opis" class="form-control" name="opis" rows="3" cols="30" spellcheck="false" required></textarea>
                         </div>
                     </div>
                     <div class="break"></div>
-                    <div style="flex:1"><input type="submit" class="btn btn-info mb-4" style="margin-left:3rem" value="Potvrdi"></div>
-                    <div style="flex:1"><input type="reset"  class="btn btn-info mb-4" style="margin-left:3rem" value="Poništi" onclick="ponisti();"></div>
+                    <div style="flex:1"><input type="submit" class="btn btn-info mb-4" style="display: inline-block;" value="Potvrdi">
+                    <input type="reset"  class="btn btn-info mb-4" style="display: inline-block;" value="Poništi" onclick="ponisti();"></div>
                 </div>
             </form>
         </div>
     </div>
     <div class="container">
         <h2 class="text-center text-white mt-5">Oglasna tabla</h2>
+        
         <div id="task-container">
-            
+
             <div class="task-wrapper flex-wrapper border-top text-center" style="font-weight: bold;">
                 <div style="flex:1">Naslov</div>
                 <div style="flex:2; padding-left:10px; padding-right:10px;">Opis</div>
                 <div style="flex:1; cursor: pointer;" text-center>Autor</div>
-                <div style="flex:1"></div>
+
+                <div style="flex:1">                <button class="btn btn-danger" onclick="window.location.href='logout.php'">Odjavi se</button></div>
             </div>
             <div id="data">
                 <?php
                     foreach(array_reverse($data) as $row):
                 ?>
                 <div class="task-wrapper flex-wrapper align-items-center">
-                    <div id="naslov" class="text-left" style="flex:1; font-weight:bolder; color:royalblue"><?php echo $row['naslov'] ?></div>
+                    <div id="naslov" class="text-left" style="flex:1; font-weight:bolder; color:black"><?php echo $row['naslov'] ?></div>
                     <div id="opis" class="opis" style="flex:2; padding-left:10px; padding-right:10px;"><?php echo $row['opis'] ?></div>
                     <div class="text-center" style="flex:1"><?php echo $row['username'] ?></div>
                     <div class="text-center" style="flex:1">
@@ -84,13 +86,18 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
             <div class="taks-wrapper p-3 flex-wrapper">
                 <div style="flex:2">
                 </div>
-                <div style="flex:1">
+                <div style="display: inline-block;">
+
+                <button class="btn btn-dark" onclick="prikazi();">Dodaj novu aktivnost</button>
+                
                     <form action="">
-                        <label style="margin-right:10px" for="pretraga">Pretraži po naslovu</label>
+                        <label style="margin-right:10px" for="pretraga">Pretraži po naslovu 🔎:</label>
                         <input id="pretraga" oninput="pretrazi();" class="ml-1" name="pretraga" type="text">
+                        
+                    
                     </form>
-                    <button class="btn btn-primary" onclick="prikazi();">Dodaj novu aktivnost</button>
-                    <button class="btn btn-danger" onclick="window.location.href='logout.php'">Odjavi se</button>
+                    
+                    
             </div>
         </div>
     </div>

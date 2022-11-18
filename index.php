@@ -31,15 +31,19 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Oglasna tabla</title>
+    <title>Oglasna tabla | Prijava</title>
 </head>
 <body>
     <div id = "login">
-        <h1 class="text-center text-black pt-5 mt-5">Prijava</h1>
+        
         <div class = "container"> 
+            
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
+                
                 <div id="login-box" class="col-md-12">
+
+                <h1 class="text-center text-black pt-5 mt-5">Prijavite se</h1>
                     <form id="login-form" action="" method="post">
                         <div class="form-group">
                             <label for="username" >Korisničko ime:</label><br>
@@ -50,7 +54,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
                         <div class="form-grop mt-4 text-white">
-                          <input type="submit" name="submit" style="color: black;" class="btn btn-info btn-md" value="Potvrdi">
+                          <input type="submit" name="submit" style="color: white;" class="btn btn-success" value="Pošalji">
                         </div>
                     </form>
                 </div>

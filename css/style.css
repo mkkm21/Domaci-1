@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, p, span, strike{
     max-width:1200px;
     margin:0 auto;
     box-shadow: 0 14px 28px rgba(70, 54, 54, 0.25), 0 10px 10px rgba(170, 93, 42, 0.22);
-    background-color: #fff;
+    background-color: rgba(0, 187, 72, 0.185);
     margin-top:100px;
     margin-bottom:100px;
     justify-content: space-around;
@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, p, span, strike{
 
 .form{
     display: none;
-    background-color: rgba(195, 211, 159, 0.85) ;
+    background-color: rgba(195, 211, 159, 0.418) ;
     border-radius: 6px;
     box-shadow: 0 3px 8px rgba(37, 32, 32, 0.25);
     

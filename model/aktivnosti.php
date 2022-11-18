@@ -36,7 +36,7 @@
         }
 
         public function obrisi_aktivnost(mysqli $conn){
-            $query = "DELETE FROM aktivnosti WHERE id = $this->id";
+            $query = "DELETE FROM aktivnosti WHERE id = $this->id and user_id = '$_SESSION[user_id]'";
             return $conn->query($query);
         }
 

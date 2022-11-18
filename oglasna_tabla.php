@@ -58,7 +58,7 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                 <div style="flex:1">Naslov</div>
                 <div style="flex:2; padding-left:10px; padding-right:10px;">Opis</div>
                 <div onclick="sortirajPoKorisniku();" style="flex:1; cursor: pointer;">🧾️</div>
-                <div style="flex:1; cursor: pointer;">Autor</div>
+                <div style="flex:1; cursor: pointer;" text-center>Autor</div>
                 <div style="flex:1"></div>
             </div>
             <div id="data">
@@ -66,7 +66,7 @@ $data = Aktivnosti::prikazi_aktivnosti($conn);
                     foreach(array_reverse($data) as $row):
                 ?>
                 <div class="task-wrapper flex-wrapper align-items-center">
-                    <div id="naslov" class="text-center" style="flex:1; font-weight:bolder; color:royalblue"><?php echo $row['naslov'] ?></div>
+                    <div id="naslov" class="text-left" style="flex:1; font-weight:bolder; color:royalblue"><?php echo $row['naslov'] ?></div>
                     <div id="opis" class="opis" style="flex:2; padding-left:10px; padding-right:10px;"><?php echo $row['opis'] ?></div>
                     <div class="text-center" style="flex:1"><?php echo $row['username'] ?></div>
                     <div class="text-center" style="flex:1">
